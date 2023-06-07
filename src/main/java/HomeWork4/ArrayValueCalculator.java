@@ -1,4 +1,4 @@
-package HomeWork_4;
+package HomeWork4;
 
 public class ArrayValueCalculator {
     public int doCalc(String[][] array) throws ArraySizeException {

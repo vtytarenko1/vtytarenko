@@ -1,4 +1,4 @@
-package HomeWork_4;
+package HomeWork4;
 
 public class ArraySizeException extends IllegalArgumentException {
     public ArraySizeException(String message) {
