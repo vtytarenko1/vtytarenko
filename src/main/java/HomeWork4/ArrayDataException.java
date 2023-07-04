@@ -1,4 +1,4 @@
-package HomeWork_4;
+package HomeWork4;
 
 public class ArrayDataException extends IllegalArgumentException {
     public ArrayDataException(String message) {

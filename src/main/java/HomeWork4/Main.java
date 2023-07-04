@@ -1,12 +1,12 @@
-package HomeWork_4;
+package HomeWork4;
 
 public class Main {
     public static void main(String[] args) {
         String[][] inputArray = {
-                {"1", "2", "3", "4"},
-                {"5", "invalid 1", "6", "7"},
-                {"invalid 2", "8", "9", "0"},
-                {"1", "2", "invalid 3", "3"}
+                {"1", "1", "1", "1"},
+                {"2", "invalid 1", "2", "2"},
+                {"invalid 2", "3", "3", "3"},
+                {"4", "4", "invalid 3", "4"}
         };
         int sum = 0;
         try {
