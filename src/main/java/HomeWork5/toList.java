@@ -1,17 +1,27 @@
 package HomeWork5;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
+import java.util.ArrayList;
 
-public class toList {
-    public static void main(String[] args) {
-        List<String> items = new ArrayList<>();
-        items.add("ONE" + "ONE" + "ONE");
-        items.add("TWO");
-        items.add("THREE");
+class toList
+{
+    public static <T> List<T> convertToList(T[] arr)
+    {
+        List<T> list = new ArrayList<>();
 
-        String s[]= new String[5];
-        System.out.println(s);
+        for (T i: arr) {
+            list.add(i);
+        }
+
+        return list;
+    }
+
+    public static void main(String[] args)
+    {
+        String[] str = { "A", "B", "C", "D" };
+
+        List<String> list = convertToList(str);
+
+        System.out.println(list);
     }
 }
