@@ -25,7 +25,8 @@ public class countOccurance {
             String next = iter.next();
             System.out.println("1: " + next);
         }
-
+        //I do not understand this part:
+        //Count how many times the string passed as the second argument occurs.
 
     }
 }
