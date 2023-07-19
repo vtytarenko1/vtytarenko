@@ -1,9 +1,9 @@
 package HomeWork8;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 class Product {
     private String type;
@@ -34,54 +34,47 @@ class Product {
         return addedDate;
     }
 
+    //Using Stream API
     public static List<Product> getBooksWithPriceAbove100(List<Product> products) {
-        List<Product> result = new ArrayList<>();
-        for (Product product : products) {
-            if (product.getType().equals("Book") && product.getPrice() > 100) {
-                result.add(product);
-            }
-        }
-        return result;
+        return products.stream()
+                .filter(product -> product.getType().equals("Book") && product.getPrice() > 100)
+                .collect(Collectors.toList());
     }
 
+    //Using Stream API
     public static List<Product> getDiscountedBooks(List<Product> products) {
-        List<Product> result = new ArrayList<>();
-        for (Product product : products) {
-            if (product.getType().equals("Book") && product.isDiscountApplicable()) {
-                double discountedPrice = product.getPrice() * 0.9;
-                Product discountedProduct = new Product(product.getType(), discountedPrice, false, product.getAddedDate());
-                result.add(discountedProduct);
-            }
-        }
-        return result;
+        return products.stream()
+                .filter(product -> product.getType().equals("Book") && product.isDiscountApplicable())
+                .map(product -> {
+                    // Apply a 10% discount to the price
+                    double discountedPrice = product.getPrice() * 0.9;
+                    return new Product(product.getType(), discountedPrice, false, product.getAddedDate());
+                })
+                .collect(Collectors.toList());
     }
 
+    //Using Stream API
     public static Product getCheapestBook(List<Product> products) {
-        Product cheapestBook = null;
-        for (Product product : products) {
-            if (product.getType().equals("Book") && (cheapestBook == null || product.getPrice() < cheapestBook.getPrice())) {
-                cheapestBook = product;
-            }
-        }
-        if (cheapestBook == null) {
-            throw new RuntimeException("Product [Book] not found");
-        }
-        return cheapestBook;
+        return products.stream()
+                .filter(product -> product.getType().equals("Book"))
+                .min(Comparator.comparingDouble(Product::getPrice))
+                .orElseThrow(() -> new RuntimeException("Product [Book] not found"));
     }
 
+    //Using Stream API
     public static List<Product> getLastThreeAddedProducts(List<Product> products) {
-        products.sort(Comparator.comparing(Product::getAddedDate).reversed());
-        return products.subList(0, Math.min(3, products.size()));
+        return products.stream()
+                .sorted(Comparator.comparing(Product::getAddedDate).reversed())
+                .limit(3)
+                .collect(Collectors.toList());
     }
 
+    //Using Stream API
     public static double calculateTotalCost(List<Product> products) {
-        double totalCost = 0;
         LocalDate currentDate = LocalDate.now();
-        for (Product product : products) {
-            if (product.getType().equals("Book") && product.getPrice() <= 75 && product.getAddedDate().getYear() == currentDate.getYear()) {
-                totalCost += product.getPrice();
-            }
-        }
-        return totalCost;
+        return products.stream()
+                .filter(product -> product.getType().equals("Book") && product.getPrice() <= 75 && product.getAddedDate().getYear() == currentDate.getYear())
+                .mapToDouble(Product::getPrice)
+                .sum();
     }
 }

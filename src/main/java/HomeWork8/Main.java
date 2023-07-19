@@ -6,12 +6,11 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-
         List<Product> products = new ArrayList<>();
         products.add(new Product("Book", 100, true, LocalDate.of(2023, 1, 1)));
-        products.add(new Product("Book", 70, true, LocalDate.of(2023, 2, 15)));
-        products.add(new Product("Book", 25, false, LocalDate.of(2023, 3, 20)));
-        products.add(new Product("Not a Book", 5, true, LocalDate.of(2023, 4, 25)));
+        products.add(new Product("Book", 75, true, LocalDate.of(2023, 2, 15)));
+        products.add(new Product("Book", 50, false, LocalDate.of(2023, 3, 20)));
+        products.add(new Product("Not a Book", 25, true, LocalDate.of(2023, 4, 5)));
 
         List<Product> expensiveBooks = Product.getBooksWithPriceAbove100(products);
         System.out.println("Expensive books: " + expensiveBooks);
