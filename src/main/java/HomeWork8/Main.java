@@ -29,6 +29,6 @@ public class Main {
         System.out.println("Last three added products: " + lastThreeProducts);
 
         double totalCost = Product.calculateTotalCost(products);
-        System.out.println("Total cost of eligible books: " + totalCost);
+        //System.out.println("Total cost of eligible books: " + totalCost);
     }
 }
