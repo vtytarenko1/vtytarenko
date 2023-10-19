@@ -7,6 +7,19 @@ public class CoffeeOrderBoard {
     private PriorityQueue<Order> orderQueue;
     private Logger logger;
 
+    public int getOrderQueueSize() {
+        return orderQueue.size();
+    }
+
+    public String drawOrderQueue() {
+        StringBuilder result = new StringBuilder();
+        result.append("Current order queue:\n");
+        for (Order order : orderQueue) {
+            result.append(order.getOrderNumber()).append(" | ").append(order.getCustomerName()).append("\n");
+        }
+        return result.toString();
+    }
+
     public CoffeeOrderBoard() {
         orderQueue = new PriorityQueue<>();
         logger = Logger.getLogger(CoffeeOrderBoard.class.getName());
