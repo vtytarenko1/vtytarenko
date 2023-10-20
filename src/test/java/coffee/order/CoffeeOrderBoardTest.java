@@ -1,15 +1,15 @@
 package coffee.order;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class CoffeeOrderBoardTest {
     private CoffeeOrderBoard orderBoard;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         orderBoard = new CoffeeOrderBoard();
     }
@@ -51,9 +51,9 @@ public class CoffeeOrderBoardTest {
     public void testDrawOrderQueue() {
         Order order1 = new Order("Eve");
         Order order2 = new Order("Frank");
-        orderBoard.add(order2);  // Спочатку додайте order2
-        orderBoard.add(order1);  // А потім order1
-        String expectedOutput = "1 | Frank\n2 | Eve\n";
+        orderBoard.add(order2);
+        orderBoard.add(order1);
+        String expectedOutput = "Current order queue:\n" + order1.getOrderNumber() + " | Eve\n" + order2.getOrderNumber() + " | Frank\n";
         assertEquals(expectedOutput, orderBoard.drawOrderQueue());
     }
 }
