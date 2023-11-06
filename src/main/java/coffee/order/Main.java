@@ -9,9 +9,9 @@ public class Main {
         Order order3 = new Order("Obi-van");
         Order order4 = new Order("John Snow");
 
-        orderBoard.add(order1);
-        orderBoard.add(order2);
         orderBoard.add(order3);
+        orderBoard.add(order2);
+        orderBoard.add(order1);
         orderBoard.add(order4);
 
         orderBoard.draw();
