@@ -1,9 +1,5 @@
 package hw12;
 
-
-/**
- * @author spasko
- */
 public class StringChangerService {
     private StringLowerUpperService lowerUpperService;
 

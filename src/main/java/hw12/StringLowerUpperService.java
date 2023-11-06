@@ -1,7 +1,6 @@
 package hw12;
-/**
- * @author spasko
- */
+
+
 public class StringLowerUpperService {
 
     public String toUpper(String input) {
